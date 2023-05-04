@@ -4,10 +4,12 @@
  */
 package converter;
 
+import dao.TipoServicoDao;
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.inject.Inject;
 import javax.inject.Named;
 import model.TipoDeServico;
 
@@ -16,9 +18,18 @@ import model.TipoDeServico;
 @ApplicationScoped
 public class TipoServicoConverter implements Converter<TipoDeServico>{
 
+    
+    @Inject
+    TipoServicoDao dao;
+    
     @Override
-    public TipoDeServico getAsObject(FacesContext fc, UIComponent uic, String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public TipoDeServico getAsObject(FacesContext fc, UIComponent uic, String value) {
+        try {
+            Integer id = Integer.parseInt( value );
+            return dao.findById( id );
+        } catch (Exception t) {
+            return null;
+        } 
     }
 
     @Override
@@ -26,7 +37,7 @@ public class TipoServicoConverter implements Converter<TipoDeServico>{
         if ( value == null) {
             return null;
         }
-        return String.valueOf( value.getId() ); //To change body of generated methods, choose Tools | Templates.
+        return String.valueOf( value.getId() ); 
     }
 
    

@@ -113,5 +113,66 @@ public class Agendamento implements Serializable{
         this.totalservico = totalservico;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 17 * hash + this.id;
+        hash = 17 * hash + Objects.hashCode(this.tipodeservico);
+        hash = 17 * hash + Objects.hashCode(this.equipe);
+        hash = 17 * hash + Objects.hashCode(this.data);
+        hash = 17 * hash + Objects.hashCode(this.periodo);
+        hash = 17 * hash + Objects.hashCode(this.contratante);
+        hash = 17 * hash + Objects.hashCode(this.telefonecontato);
+        hash = 17 * hash + Objects.hashCode(this.email);
+        hash = 17 * hash + Objects.hashCode(this.enderecodoservico);
+        hash = 17 * hash + Objects.hashCode(this.totalservico);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Agendamento other = (Agendamento) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.periodo, other.periodo)) {
+            return false;
+        }
+        if (!Objects.equals(this.contratante, other.contratante)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefonecontato, other.telefonecontato)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.enderecodoservico, other.enderecodoservico)) {
+            return false;
+        }
+        if (!Objects.equals(this.tipodeservico, other.tipodeservico)) {
+            return false;
+        }
+        if (!Objects.equals(this.equipe, other.equipe)) {
+            return false;
+        }
+        if (!Objects.equals(this.data, other.data)) {
+            return false;
+        }
+        if (!Objects.equals(this.totalservico, other.totalservico)) {
+            return false;
+        }
+        return true;
+    }
+
     
 }

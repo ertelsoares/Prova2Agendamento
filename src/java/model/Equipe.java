@@ -5,7 +5,6 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 
 public class Equipe implements Serializable {
@@ -69,11 +68,7 @@ public class Equipe implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 89 * hash + this.id;
-        hash = 89 * hash + Objects.hashCode(this.nomedaequipe);
-        hash = 89 * hash + Objects.hashCode(this.responsavel);
-        hash = 89 * hash + Objects.hashCode(this.valorservicoperiodo);
-        hash = 89 * hash + Objects.hashCode(this.tipodeservico);
+        hash = 79 * hash + this.id;
         return hash;
     }
 
@@ -89,28 +84,8 @@ public class Equipe implements Serializable {
             return false;
         }
         final Equipe other = (Equipe) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.nomedaequipe, other.nomedaequipe)) {
-            return false;
-        }
-        if (!Objects.equals(this.responsavel, other.responsavel)) {
-            return false;
-        }
-        if (!Objects.equals(this.valorservicoperiodo, other.valorservicoperiodo)) {
-            return false;
-        }
-        if (!Objects.equals(this.tipodeservico, other.tipodeservico)) {
-            return false;
-        }
-        return true;
+        return this.id == other.id;
     }
+ 
 
-    
-
-    
-    
-    
-    
 }

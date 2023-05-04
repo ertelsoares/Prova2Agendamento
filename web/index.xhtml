@@ -15,14 +15,15 @@
                    <p:selectOneMenu value="#{buscaBean.tipodeservicoselecionado}"
                                     converter="#{TipodeServicoConverter}">
                        <f:selectItems value="#{aplicacao.itensTiposdeServicos}"/>
-                       
+                       <p:ajax event="change" immediate="true" update="equipe"/>
                      </p:selectOneMenu>
                  </p:column>
                  <p:column><br/>
                     <p:outputLabel><strong>Equipe</strong></p:outputLabel>
-                    <p:selectOneMenu value="#{buscaBean.equipeSelecionada}"
+                    <p:selectOneMenu id="equipe"
+                                     value="#{buscaBean.equipeSelecionada}"
                                      converter="#{EquipeConverter}">
-                        <f:selectItems value="#{aplicacao.itensEquipes}"/>
+                        <f:selectItems value="#{buscaBean.selectEquipes}"/>
                         <p:ajax event="change" immediate="true" update="responsavel"/>
                         <p:ajax event="change" immediate="true" update="valorperiodo"/>
                         <p:ajax event="change" immediate="true" update="totalservico"/>

@@ -5,7 +5,6 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
@@ -42,8 +41,7 @@ public class TipoDeServico implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + this.id;
-        hash = 97 * hash + Objects.hashCode(this.descricaodoservico);
+        hash = 79 * hash + this.id;
         return hash;
     }
 
@@ -59,15 +57,9 @@ public class TipoDeServico implements Serializable {
             return false;
         }
         final TipoDeServico other = (TipoDeServico) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        return Objects.equals(this.descricaodoservico, other.descricaodoservico);
+        return this.id == other.id;
     }
-    
-    
-    
-    
+
      
     
 }

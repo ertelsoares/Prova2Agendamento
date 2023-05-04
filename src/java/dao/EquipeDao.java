@@ -5,7 +5,9 @@
 package dao;
 
 import java.io.Serializable;
+import java.util.LinkedList;
 import model.Equipe;
+import model.TipoDeServico;
 
 /**
  *
@@ -13,7 +15,14 @@ import model.Equipe;
  */
 public class EquipeDao extends GenericDAO<Equipe> implements Serializable {
     
-    
+    public LinkedList<Equipe> filtarPorTipoDeServico( TipoDeServico tipodeservico ) {
+        LinkedList<Equipe> equipes = new LinkedList<>();
+        for ( Equipe eq : lista ) {
+            if (eq.getTipodeservico().equals(tipodeservico))
+                equipes.add(eq);
+        }
+        return equipes;
+    }
     
     public Equipe findById(int id) {
         for (Equipe e : lista) {

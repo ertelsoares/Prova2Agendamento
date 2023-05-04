@@ -51,12 +51,6 @@ public class AplicacaoBean {
             System.out.println("Erro lendo arquivos, reiniciando dados...");
             equipeDao = new EquipeDao();
             tiposervicoDao = new TipoServicoDao();
-            Equipe e1 = new Equipe(1, "Equipe A1","Jackie chan",240.00);
-            equipeDao.inserir(e1);
-            Equipe e2 = new Equipe(2, "Equipe A2","Sylvester Stallone",250.00);
-            equipeDao.inserir(e2);
-            Equipe e3 = new Equipe(3, "Equipe A3","Bruce Lee",300.00);
-            equipeDao.inserir(e3);
             TipoDeServico tps1 = new TipoDeServico(1,"Limpeza de terrenos urbanos");
             tiposervicoDao.inserir(tps1);
             TipoDeServico tps2 = new TipoDeServico(2,"Remoção de entulhos de obras");
@@ -67,6 +61,19 @@ public class AplicacaoBean {
             tiposervicoDao.inserir(tps4);
             TipoDeServico tps5 = new TipoDeServico(5,"Limpeza de fachadas de vidro");
             tiposervicoDao.inserir(tps5);
+            Equipe e1 = new Equipe(1, "Equipe A1","Jackie chan",240.00,tps1);
+            equipeDao.inserir(e1);
+            Equipe e2 = new Equipe(2, "Equipe A2","Sylvester Stallone",250.00,tps2);
+            equipeDao.inserir(e2);
+            Equipe e3 = new Equipe(3, "Equipe A3","Bruce Lee",300.00,tps3);
+            equipeDao.inserir(e3);
+            Equipe e4 = new Equipe(4, "Equipe A4","Michael Jackson",400.00,tps4);
+            equipeDao.inserir(e4);
+            Equipe e5 = new Equipe(5, "Equipe A5","Lula",450.00,tps5);
+            equipeDao.inserir(e5);
+            Equipe e6 = new Equipe(6, "Equipe A6","Alexandre De Moraes",500.00,tps5);
+            equipeDao.inserir(e6);
+            
         }
     }
 
@@ -96,11 +103,19 @@ public class AplicacaoBean {
         return itensTiposdeServicos;
     }
 
+    @Produces
+    public TipoServicoDao getTiposervicoDao() {
+        return tiposervicoDao;
+    }
     
     @Produces
     public EquipeDao getEquipeDao() {
         return equipeDao;
     }
+
+    
+
+    
     
     
    
