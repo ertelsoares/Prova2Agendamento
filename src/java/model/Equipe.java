@@ -13,18 +13,18 @@ public class Equipe implements Serializable {
     private String nomedaequipe;
     private String responsavel;
     private Double valorservicoperiodo;
+    private TipoDeServico tipodeservico;
 
     public Equipe() {
     }
 
-    public Equipe(int id, String nomedaequipe, String responsavel, Double valorservicoperiodo) {
+    public Equipe(int id, String nomedaequipe, String responsavel, Double valorservicoperiodo, TipoDeServico tipodeservico) {
         this.id = id;
         this.nomedaequipe = nomedaequipe;
         this.responsavel = responsavel;
         this.valorservicoperiodo = valorservicoperiodo;
+        this.tipodeservico = tipodeservico;
     }
-
-    
 
     public int getId() {
         return id;
@@ -58,13 +58,22 @@ public class Equipe implements Serializable {
         this.valorservicoperiodo = valorservicoperiodo;
     }
 
+    public TipoDeServico getTipodeservico() {
+        return tipodeservico;
+    }
+
+    public void setTipodeservico(TipoDeServico tipodeservico) {
+        this.tipodeservico = tipodeservico;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + this.id;
-        hash = 79 * hash + Objects.hashCode(this.nomedaequipe);
-        hash = 79 * hash + Objects.hashCode(this.responsavel);
-        hash = 79 * hash + Objects.hashCode(this.valorservicoperiodo);
+        int hash = 7;
+        hash = 89 * hash + this.id;
+        hash = 89 * hash + Objects.hashCode(this.nomedaequipe);
+        hash = 89 * hash + Objects.hashCode(this.responsavel);
+        hash = 89 * hash + Objects.hashCode(this.valorservicoperiodo);
+        hash = 89 * hash + Objects.hashCode(this.tipodeservico);
         return hash;
     }
 
@@ -92,8 +101,13 @@ public class Equipe implements Serializable {
         if (!Objects.equals(this.valorservicoperiodo, other.valorservicoperiodo)) {
             return false;
         }
+        if (!Objects.equals(this.tipodeservico, other.tipodeservico)) {
+            return false;
+        }
         return true;
     }
+
+    
 
     
     
