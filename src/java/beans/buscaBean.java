@@ -2,6 +2,7 @@ package beans;
 
 import dao.EquipeDao;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.LinkedList;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -21,11 +22,14 @@ public class BuscaBean implements Serializable {
     private Double totalServico;
     private String periodo;
     private LinkedList<SelectItem> selectEquipes;
+    private Date data;
     
     @Inject
     EquipeDao equipeDao;
     
-     @PostConstruct
+    
+    
+    @PostConstruct
     public void iniciar() {
         selectEquipes = new LinkedList<SelectItem>();
         selectEquipes.add(new SelectItem(null,"Selecione o tipo de serviço primeiro"));
@@ -74,6 +78,8 @@ public class BuscaBean implements Serializable {
         if (equipeSelecionada == null) {
             responsavel = "selecione uma equipe para listar responsavel";
             valorservico = 0.0;
+            totalServico = 0.0;
+            periodo = "";
         } else {
             responsavel = equipeSelecionada.getResponsavel();
             valorservico = equipeSelecionada.getValorservicoperiodo();
@@ -140,4 +146,15 @@ public class BuscaBean implements Serializable {
              break;
          }
     }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+    
+    
+    
 }

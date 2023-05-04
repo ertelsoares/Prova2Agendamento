@@ -15,7 +15,11 @@
                    <p:selectOneMenu value="#{buscaBean.tipodeservicoselecionado}"
                                     converter="#{TipodeServicoConverter}">
                        <f:selectItems value="#{aplicacao.itensTiposdeServicos}"/>
-                       <p:ajax event="change" immediate="true" update="equipe"/>
+                        <p:ajax event="change" immediate="true" update="equipe"/>
+                        <p:ajax event="change" immediate="true" update="periodo"/>
+                        <p:ajax event="change" immediate="true" update="responsavel"/>
+                        <p:ajax event="change" immediate="true" update="valorperiodo"/>
+                        <p:ajax event="change" immediate="true" update="totalservico"/>
                      </p:selectOneMenu>
                  </p:column>
                  <p:column><br/>
@@ -24,6 +28,7 @@
                                      value="#{buscaBean.equipeSelecionada}"
                                      converter="#{EquipeConverter}">
                         <f:selectItems value="#{buscaBean.selectEquipes}"/>
+                        <p:ajax event="change" immediate="true" update="periodo"/>
                         <p:ajax event="change" immediate="true" update="responsavel"/>
                         <p:ajax event="change" immediate="true" update="valorperiodo"/>
                         <p:ajax event="change" immediate="true" update="totalservico"/>
@@ -47,6 +52,9 @@
                                <p:ajax event="change" immediate="true" update="totalservico"/>
                          </p:selectOneRadio>
                         <br/>
+                         <p:outputLabel value="Ano até:"/>
+                         <p:inputMask mask="99/99/9999" value="#{buscaBean.data}"/>
+                         <br/>
                         <p:outputLabel><strong>Total Serviço:</strong></p:outputLabel>
                         <p:outputLabel id="totalservico"  value=" #{buscaBean.totalServico}" />
                </p:column>

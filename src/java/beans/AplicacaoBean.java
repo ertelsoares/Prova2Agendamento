@@ -11,7 +11,6 @@ import dao.TipoServicoDao;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -112,13 +111,11 @@ public class AplicacaoBean {
     public EquipeDao getEquipeDao() {
         return equipeDao;
     }
-
     
-
-    
-    
-    
-   
+    @Produces
+    public AgendamentoDao getAgendamentoDao() {
+        return agendamentoDao;
+    }
     
     
 }

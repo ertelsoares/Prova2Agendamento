@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ertel/OneDrive/Documentos/NetBeansProjects/Prova2Agendamento/src/java/dao/EquipeDao.java</file>
             <file>file:/C:/Users/ertel/OneDrive/Documentos/NetBeansProjects/Prova2Agendamento/src/java/model/Equipe.java</file>
-            <file>file:/C:/Users/ertel/OneDrive/Documentos/NetBeansProjects/Prova2Agendamento/src/java/converter/EquipeConverter.java</file>
-            <file>file:/C:/Users/ertel/OneDrive/Documentos/NetBeansProjects/Prova2Agendamento/src/java/model/Agendamento.java</file>
+            <file>file:/C:/Users/ertel/OneDrive/Documentos/NetBeansProjects/Prova2Agendamento/src/java/model/TipoDeServico.java</file>
             <file>file:/C:/Users/ertel/OneDrive/Documentos/NetBeansProjects/Prova2Agendamento/web/index.xhtml</file>
             <file>file:/C:/Users/ertel/OneDrive/Documentos/NetBeansProjects/Prova2Agendamento/src/java/beans/BuscaBean.java</file>
-            <file>file:/C:/Users/ertel/OneDrive/Documentos/NetBeansProjects/Prova2Agendamento/src/java/beans/AplicacaoBean.java</file>
-            <file>file:/C:/Users/ertel/OneDrive/Documentos/NetBeansProjects/Prova2Agendamento/src/java/dao/GenericDAO.java</file>
         </group>
     </open-files>
 </project-private>
