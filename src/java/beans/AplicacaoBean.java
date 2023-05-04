@@ -9,10 +9,14 @@ import dao.EquipeDao;
 import model.Equipe;
 import dao.TipoServicoDao;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Produces;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
 import model.TipoDeServico;
@@ -24,12 +28,10 @@ public class AplicacaoBean {
     private EquipeDao equipeDao;
     private TipoServicoDao tiposervicoDao;
     private AgendamentoDao agendamentoDao;
-    private List<SelectItem> equipes;
-    private List<SelectItem> tiposdeservicos;
+    private List<SelectItem> itensEquipes;
+    private List<SelectItem> itensTiposdeServicos;
     
-    
-    
-     private String arquivo = "C:/Users/ertel/Documents/dados_agendamento.dat";
+    private String arquivo = "C:/Users/ertel/Documents/dados_agendamento.dat";
 
     public AplicacaoBean() {
     }
@@ -45,7 +47,7 @@ public class AplicacaoBean {
             agendamentoDao = (AgendamentoDao) ois.readObject();
             ois.close();
             fis.close();
-        } catch (Exception ex) { // não foi possível ler os dados, criar com os valores padrão 
+        } catch (IOException | ClassNotFoundException ex) {// não foi possível ler os dados, criar com os valores padrão 
             System.out.println("Erro lendo arquivos, reiniciando dados...");
             equipeDao = new EquipeDao();
             tiposervicoDao = new TipoServicoDao();
@@ -55,7 +57,6 @@ public class AplicacaoBean {
             equipeDao.inserir(e2);
             Equipe e3 = new Equipe(3, "Equipe A3","Bruce Lee",300.00);
             equipeDao.inserir(e3);
-            
             TipoDeServico tps1 = new TipoDeServico(1,"Limpeza de terrenos urbanos");
             tiposervicoDao.inserir(tps1);
             TipoDeServico tps2 = new TipoDeServico(2,"Remoção de entulhos de obras");
@@ -68,5 +69,41 @@ public class AplicacaoBean {
             tiposervicoDao.inserir(tps5);
         }
     }
+
+    public List<SelectItem> getItensEquipes()  {
+        if(itensEquipes == null){
+            itensEquipes = new LinkedList<>();
+            itensEquipes.add(new SelectItem(null, "Selecione uma equipe"));
+            
+            equipeDao.listar().forEach(eq -> {
+                itensEquipes.add(new SelectItem(eq,eq.getNomedaequipe()));
+            });
+        }
+        
+        return itensEquipes;
+    }
+   
+
+    public List<SelectItem> getItensTiposdeServicos() {
+        if(itensTiposdeServicos == null){
+            itensTiposdeServicos = new LinkedList<>();
+            itensTiposdeServicos.add(new SelectItem(null,"Selecione um tipo de serviço" ));
+            
+            tiposervicoDao.listar().forEach(tps -> {
+                itensTiposdeServicos.add(new SelectItem(tps, tps.getDescricaodoservico()));
+            });
+        }
+        return itensTiposdeServicos;
+    }
+
+    
+    @Produces
+    public EquipeDao getEquipeDao() {
+        return equipeDao;
+    }
+    
+    
+   
+    
     
 }

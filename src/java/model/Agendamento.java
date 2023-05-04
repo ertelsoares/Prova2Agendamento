@@ -16,6 +16,7 @@ public class Agendamento implements Serializable{
     private String telefonecontato;
     private String email;
     private String enderecodoservico;
+    private Double totalservico;
 
     public Agendamento() {
     }
@@ -102,6 +103,14 @@ public class Agendamento implements Serializable{
 
     public void setEnderecodoservico(String enderecodoservico) {
         this.enderecodoservico = enderecodoservico;
+    }
+
+    public Double getTotalservico() {
+        return totalservico;
+    }
+
+    public void setTotalservico(Double totalservico) {
+        this.totalservico = totalservico;
     }
 
     

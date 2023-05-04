@@ -22,8 +22,11 @@ public class TipoServicoConverter implements Converter<TipoDeServico>{
     }
 
     @Override
-    public String getAsString(FacesContext fc, UIComponent uic, TipoDeServico t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getAsString(FacesContext fc, UIComponent uic, TipoDeServico value) {
+        if ( value == null) {
+            return null;
+        }
+        return String.valueOf( value.getId() ); //To change body of generated methods, choose Tools | Templates.
     }
 
    

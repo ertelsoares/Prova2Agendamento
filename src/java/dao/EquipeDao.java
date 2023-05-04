@@ -13,4 +13,15 @@ import model.Equipe;
  */
 public class EquipeDao extends GenericDAO<Equipe> implements Serializable {
     
+    
+    
+    public Equipe findById(int id) {
+        for (Equipe e : lista) {
+            if (e.getId() == id) {
+                return e;
+            }
+        }
+        return null;
+    }
+    
 }

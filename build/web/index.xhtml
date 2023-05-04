@@ -3,20 +3,53 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-     
-                
-
-                <p:column >
-                    <p:outputLabel><strong>Tipo de  Serviço</strong></p:outputLabel>
-                    <p:selectOneMenu >
-                    <p:ajax/>
-                    </p:selectOneMenu>
-                </p:column>
+            <h:form>
+                 <p:column>
+                   <p:outputLabel><strong>Tipo de  Serviço</strong></p:outputLabel>
+                   <p:selectOneMenu value="#{buscaBean.tipodeservicoselecionado}"
+                                    converter="#{TipodeServicoConverter}">
+                       <f:selectItems value="#{aplicacao.itensTiposdeServicos}"/>
+                       
+                     </p:selectOneMenu>
+                 </p:column>
+                 <p:column><br/>
+                    <p:outputLabel><strong>Equipe</strong></p:outputLabel>
+                    <p:selectOneMenu value="#{buscaBean.equipeSelecionada}"
+                                     converter="#{EquipeConverter}">
+                        <f:selectItems value="#{aplicacao.itensEquipes}"/>
+                        <p:ajax event="change" immediate="true" update="responsavel"/>
+                        <p:ajax event="change" immediate="true" update="valorperiodo"/>
+                        <p:ajax event="change" immediate="true" update="totalservico"/>
+                     </p:selectOneMenu>
+                   
+                  </p:column><br/>
+                  <br/>
+               <p:column>
+                       <p:outputLabel><strong>Responsável:</strong></p:outputLabel>
+                       <p:outputLabel id="responsavel"  value=" #{buscaBean.responsavel}" />
+                       <br/>
+                       <p:outputLabel><strong>Valor do periodo:</strong></p:outputLabel>
+                       <p:outputLabel id="valorperiodo"  value=" #{buscaBean.valorservico}" />
+                       <br/>
+                        <p:outputLabel><strong>Periodo:</strong></p:outputLabel>
+                       
+                        <p:selectOneRadio id="periodo" value="#{buscaBean.periodo}">
+                             <f:selectItem itemLabel="Manhã" itemValue="manha" />
+                              <f:selectItem itemLabel="Tarde" itemValue="tarde" />
+                              <f:selectItem itemLabel="Dia Inteiro" itemValue="diainterio" />
+                               <p:ajax event="change" immediate="true" update="totalservico"/>
+                         </p:selectOneRadio>
+                        <br/>
+                        <p:outputLabel><strong>Total Serviço:</strong></p:outputLabel>
+                        <p:outputLabel id="totalservico"  value=" #{buscaBean.totalServico}" />
+               </p:column>
+           </h:form>     
                 
 
         
