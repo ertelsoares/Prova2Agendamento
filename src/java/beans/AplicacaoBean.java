@@ -76,6 +76,7 @@ public class AplicacaoBean {
             Equipe e6 = new Equipe(6, "Equipe A6","Alexandre De Moraes",500.00,tps5);
             equipeDao.inserir(e6);
             
+            agendamentoDao = new AgendamentoDao();
         }
     }
 
@@ -120,5 +121,19 @@ public class AplicacaoBean {
         return agendamentoDao;
     }
     
-   
+   @PreDestroy
+    public void gravarArquivo() {
+        try {
+            FileOutputStream fos = new FileOutputStream(arquivo);
+            ObjectOutputStream oos = new ObjectOutputStream( fos );
+            oos.writeObject( equipeDao );
+            oos.writeObject( tiposervicoDao );
+            oos.writeObject( agendamentoDao );
+            oos.flush();
+            oos.close();
+            fos.close();
+        } catch(Throwable t) {
+            t.printStackTrace();
+        }
+    }
 }

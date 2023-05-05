@@ -21,8 +21,7 @@ public class Agendamento implements Serializable{
     public Agendamento() {
     }
 
-    public Agendamento(TipoDeServico tipodeservico, Equipe equipe, Date data, String periodo, String contratante, String telefonecontato, String email, String enderecodoservico) {
-    
+    public Agendamento(TipoDeServico tipodeservico, Equipe equipe, Date data, String periodo, String contratante, String telefonecontato, String email, String enderecodoservico, Double totalservico) {
         this.tipodeservico = tipodeservico;
         this.equipe = equipe;
         this.data = data;
@@ -31,7 +30,10 @@ public class Agendamento implements Serializable{
         this.telefonecontato = telefonecontato;
         this.email = email;
         this.enderecodoservico = enderecodoservico;
+        this.totalservico = totalservico;
     }
+
+   
 
     
 
@@ -107,13 +109,13 @@ public class Agendamento implements Serializable{
         this.totalservico = totalservico;
     }
 
+
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 43 * hash + Objects.hashCode(this.tipodeservico);
-        hash = 43 * hash + Objects.hashCode(this.equipe);
-        hash = 43 * hash + Objects.hashCode(this.data);
-        hash = 43 * hash + Objects.hashCode(this.periodo);
+        int hash = 3;
+        hash = 61 * hash + Objects.hashCode(this.data);
+        hash = 61 * hash + Objects.hashCode(this.periodo);
         return hash;
     }
 
@@ -132,17 +134,13 @@ public class Agendamento implements Serializable{
         if (!Objects.equals(this.periodo, other.periodo)) {
             return false;
         }
-        if (!Objects.equals(this.tipodeservico, other.tipodeservico)) {
-            return false;
-        }
-        if (!Objects.equals(this.equipe, other.equipe)) {
-            return false;
-        }
         if (!Objects.equals(this.data, other.data)) {
             return false;
         }
         return true;
     }
+
+     
 
     
 

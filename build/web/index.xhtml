@@ -53,6 +53,11 @@
                                <p:ajax event="change" immediate="true" update="totalservico"/>
                          </p:selectOneRadio>
                         <br/>
+                        <p:outputLabel><strong>Data:</strong></p:outputLabel>
+                        <p:calendar value="#{buscaBean.data}"
+                           id="vendorStartDateInputTxt" pattern="dd/MM/yyyy" mode="popup" showOn="button">
+                            <f:convertDateTime type="date"  dateStyle="short" pattern="dd/MM/yyyy" />
+                         </p:calendar>
                          <br/><br/>
                           <p:outputLabel><strong>Contratante:</strong></p:outputLabel>
                           <p:inputText value="#{buscaBean.contratante}" />
