@@ -3,11 +3,11 @@ package model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 
 
 public class Agendamento implements Serializable{
-    private int id;
     private TipoDeServico tipodeservico;
     private Equipe equipe;
     private Date data;
@@ -21,8 +21,8 @@ public class Agendamento implements Serializable{
     public Agendamento() {
     }
 
-    public Agendamento(int id, TipoDeServico tipodeservico, Equipe equipe, Date data, String periodo, String contratante, String telefonecontato, String email, String enderecodoservico) {
-        this.id = id;
+    public Agendamento(TipoDeServico tipodeservico, Equipe equipe, Date data, String periodo, String contratante, String telefonecontato, String email, String enderecodoservico) {
+    
         this.tipodeservico = tipodeservico;
         this.equipe = equipe;
         this.data = data;
@@ -33,13 +33,7 @@ public class Agendamento implements Serializable{
         this.enderecodoservico = enderecodoservico;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    
 
     public TipoDeServico getTipodeservico() {
         return tipodeservico;
@@ -113,10 +107,13 @@ public class Agendamento implements Serializable{
         this.totalservico = totalservico;
     }
 
-        @Override
+    @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + this.id;
+        hash = 43 * hash + Objects.hashCode(this.tipodeservico);
+        hash = 43 * hash + Objects.hashCode(this.equipe);
+        hash = 43 * hash + Objects.hashCode(this.data);
+        hash = 43 * hash + Objects.hashCode(this.periodo);
         return hash;
     }
 
@@ -132,8 +129,22 @@ public class Agendamento implements Serializable{
             return false;
         }
         final Agendamento other = (Agendamento) obj;
-        return this.id == other.id;
+        if (!Objects.equals(this.periodo, other.periodo)) {
+            return false;
+        }
+        if (!Objects.equals(this.tipodeservico, other.tipodeservico)) {
+            return false;
+        }
+        if (!Objects.equals(this.equipe, other.equipe)) {
+            return false;
+        }
+        if (!Objects.equals(this.data, other.data)) {
+            return false;
+        }
+        return true;
     }
+
+    
 
     
 }

@@ -1,6 +1,8 @@
 package beans;
 
+import dao.AgendamentoDao;
 import dao.EquipeDao;
+import dao.TipoServicoDao;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
@@ -23,11 +25,19 @@ public class BuscaBean implements Serializable {
     private String periodo;
     private LinkedList<SelectItem> selectEquipes;
     private Date data;
+    private String contratante;
+    private String telefonecontato;
+    private String email;
+    private String enderecodoservico;
     
     @Inject
     EquipeDao equipeDao;
     
+    @Inject 
+    TipoServicoDao tiposervicoDao;
     
+    @Inject 
+    AgendamentoDao agendamentoDao;
     
     @PostConstruct
     public void iniciar() {
@@ -92,7 +102,8 @@ public class BuscaBean implements Serializable {
         }
         
     }
-
+    
+    
     public String getResponsavel() {
         return responsavel;
     }
@@ -154,7 +165,38 @@ public class BuscaBean implements Serializable {
     public void setData(Date data) {
         this.data = data;
     }
-    
-    
+
+    public String getContratante() {
+        return contratante;
+    }
+
+    public void setContratante(String contratante) {
+        this.contratante = contratante;
+    }
+
+    public String getTelefonecontato() {
+        return telefonecontato;
+    }
+
+    public void setTelefonecontato(String telefonecontato) {
+        this.telefonecontato = telefonecontato;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEnderecodoservico() {
+        return enderecodoservico;
+    }
+
+    public void setEnderecodoservico(String enderecodoservico) {
+        this.enderecodoservico = enderecodoservico;
+    }
+     
     
 }

@@ -9,11 +9,14 @@ import dao.EquipeDao;
 import model.Equipe;
 import dao.TipoServicoDao;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.faces.model.SelectItem;
@@ -30,7 +33,7 @@ public class AplicacaoBean {
     private List<SelectItem> itensEquipes;
     private List<SelectItem> itensTiposdeServicos;
     
-    private String arquivo = "C:/Users/ertel/Documents/dados_agendamento.dat";
+    private String arquivo = "C:/Users/ertel/Documents/dados2_agendamento.dat";
 
     public AplicacaoBean() {
     }
@@ -117,5 +120,5 @@ public class AplicacaoBean {
         return agendamentoDao;
     }
     
-    
+   
 }

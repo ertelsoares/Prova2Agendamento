@@ -5,8 +5,8 @@
 package dao;
 
 import java.io.Serializable;
+import model.Agendamento;
 
-
-public class AgendamentoDao  extends GenericDAO<AgendamentoDao> implements Serializable{
+public class AgendamentoDao  extends GenericDAO<Agendamento> implements Serializable{
     
 }

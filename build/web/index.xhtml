@@ -37,6 +37,7 @@
                   </p:column><br/>
                   <br/>
                <p:column>
+                       
                        <p:outputLabel><strong>Responsável:</strong></p:outputLabel>
                        <p:outputLabel id="responsavel"  value=" #{buscaBean.responsavel}" />
                        <br/>
@@ -52,14 +53,27 @@
                                <p:ajax event="change" immediate="true" update="totalservico"/>
                          </p:selectOneRadio>
                         <br/>
-                         <p:outputLabel value="Ano até:"/>
-                         <p:inputMask mask="99/99/9999" value="#{buscaBean.data}"/>
-                         <br/>
+                         <br/><br/>
+                          <p:outputLabel><strong>Contratante:</strong></p:outputLabel>
+                          <p:inputText value="#{buscaBean.contratante}" />
+                          <br/><br/>
+                          <p:outputLabel><strong>Telefone de Contato:</strong></p:outputLabel>
+                          <p:inputMask mask="(99)99999-9999" value="#{buscaBean.telefonecontato}"/>
+                          <br/><br/>
+                           <p:outputLabel><strong>Endereço do Serviço:</strong></p:outputLabel>
+                           <p:inputText value="#{buscaBean.enderecodoservico}" />
+                          <br/><br/>
                         <p:outputLabel><strong>Total Serviço:</strong></p:outputLabel>
                         <p:outputLabel id="totalservico"  value=" #{buscaBean.totalServico}" />
-               </p:column>
-           </h:form>     
+               </p:column><br/><br/>
+                  <p:commandButton value="Confirmar" 
+                             ajax="false" action="#{agendamentoBean.confirmarAgendamento()}"/>
+                  <p:commandButton value="Limpar" 
+                                   ajax="true" immediate="true" />
+                  
+           </h:form>
                 
+        <p:outputLabel value="#{agendamentoBean.agendamento.email}" />
 
         
     </h:body>
