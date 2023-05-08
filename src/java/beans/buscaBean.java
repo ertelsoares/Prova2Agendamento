@@ -152,7 +152,7 @@ public class BuscaBean implements Serializable {
             case "tarde":
              totalServico = valorservico;
              break;
-             case "diainterio":
+             case "diainteiro":
              totalServico = (valorservico * 2);
              break;
          }

@@ -5,8 +5,16 @@
 package dao;
 
 import java.io.Serializable;
+import java.util.List;
 import model.Agendamento;
 
 public class AgendamentoDao  extends GenericDAO<Agendamento> implements Serializable{
     
+    
+    
+     public List<Agendamento> listarAgendamentos(){
+         List<Agendamento> resp;
+         resp = listar();
+         return resp;
+     }
 }

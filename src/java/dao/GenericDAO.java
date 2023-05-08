@@ -11,10 +11,11 @@ public abstract class GenericDAO<T> implements Serializable {
         lista = new LinkedList<>();
     }
     
-    public void inserir(T obj) {
+    public String inserir(T obj) {
         if (!lista.contains(obj)) {
             lista.add(obj);
         }
+        return null;
     }
     
     public void remover(T obj) {

@@ -33,6 +33,18 @@ public class Agendamento implements Serializable{
         this.totalservico = totalservico;
     }
 
+    public Agendamento(Agendamento agendamento) {
+       this.tipodeservico = agendamento.tipodeservico;
+       this.equipe = agendamento.equipe;
+       this.data = agendamento.data;
+       this.periodo = agendamento.periodo;
+       this.contratante = agendamento.contratante;
+       this.telefonecontato = agendamento.telefonecontato;
+       this.email = agendamento.email;
+       this.enderecodoservico = agendamento.enderecodoservico;
+       this.totalservico = agendamento.totalservico; //To change body of generated methods, choose Tools | Templates.
+    }
+
    
 
     
@@ -114,8 +126,10 @@ public class Agendamento implements Serializable{
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 61 * hash + Objects.hashCode(this.data);
         hash = 61 * hash + Objects.hashCode(this.periodo);
+        hash = 61 * hash + Objects.hashCode(this.equipe);
+        hash = 61 * hash + Objects.hashCode(this.data);
+        
         return hash;
     }
 
@@ -134,11 +148,19 @@ public class Agendamento implements Serializable{
         if (!Objects.equals(this.periodo, other.periodo)) {
             return false;
         }
+        if (!Objects.equals(this.equipe, other.equipe)) {
+            return false;
+        }
         if (!Objects.equals(this.data, other.data)) {
             return false;
         }
         return true;
     }
+
+
+    
+  
+    
 
      
 
