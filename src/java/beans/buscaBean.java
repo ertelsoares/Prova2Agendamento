@@ -4,11 +4,16 @@ import dao.AgendamentoDao;
 import dao.EquipeDao;
 import dao.TipoServicoDao;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import javax.inject.Named;
 import model.Equipe;
@@ -29,6 +34,7 @@ public class BuscaBean implements Serializable {
     private String telefonecontato;
     private String email;
     private String enderecodoservico;
+    private Date now = new Date();
     
     @Inject
     EquipeDao equipeDao;
@@ -131,7 +137,26 @@ public class BuscaBean implements Serializable {
     public String getPeriodo() {
         return periodo;
     }
-
+    
+    public Date getNow() {
+      return new Date();
+    }
+    public void setNow(Date now) {
+    this.now = now;
+    }
+    public void validateData(FacesContext context, UIComponent component, Object value) throws ValidatorException {
+    Date dataSelecionada = (Date) value;
+    Calendar cal = Calendar.getInstance();
+    cal.setTime(new Date());
+    cal.add(Calendar.DATE, -1); // subtrai um dia
+    Date dataAtual = cal.getTime();
+    if (dataSelecionada.before(dataAtual)) {
+        throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Data Inválida", "A data selecionada é anterior à data atual."));
+    }
+   }
+    
+    
+    
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
         if(periodo.equals("")){
@@ -142,7 +167,11 @@ public class BuscaBean implements Serializable {
 
         }
     } 
-    
+    public String limparContexto(){
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        
+        return null;
+    }
     
     public void validaperido(String periodo){
         switch(periodo) {

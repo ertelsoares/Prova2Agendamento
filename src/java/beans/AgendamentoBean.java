@@ -70,16 +70,16 @@ public class AgendamentoBean implements Serializable {
 
         } else {
             if ("diainteiro".equals(buscabean.getPeriodo())) {
-                Agendamento agendamentoManha = new Agendamento(agendamento); // cria um novo objeto de agendamento com os mesmos valores do original
-                agendamentoManha.setPeriodo("manha"); // define o período para manhã
-                agendamentoDao.inserir(agendamentoManha); // salva o agendamento da manhã
+                Agendamento agendamentoManha = new Agendamento(agendamento);
+                agendamentoManha.setPeriodo("manha"); 
+                agendamentoDao.inserir(agendamentoManha); 
 
-                Agendamento agendamentoTarde = new Agendamento(agendamento); // cria outro objeto de agendamento com os mesmos valores do original
-                agendamentoTarde.setPeriodo("tarde"); // define o período para tarde
-                agendamentoDao.inserir(agendamentoTarde); // salva o agendamento da tarde
+                Agendamento agendamentoTarde = new Agendamento(agendamento); 
+                agendamentoTarde.setPeriodo("tarde"); 
+                agendamentoDao.inserir(agendamentoTarde); 
 
-                agendamento = new Agendamento(); // cria um novo objeto de agendamento para ser usado na próxima inserção
-                agendamentos = agendamentoDao.listarAgendamentos(); // atualiza a lista de agendamentos
+                agendamento = new Agendamento(); 
+                agendamentos = agendamentoDao.listarAgendamentos(); 
                 return null;
             } else {
                 agendamentoDao.inserir(agendamento);
