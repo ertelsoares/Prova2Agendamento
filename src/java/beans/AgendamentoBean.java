@@ -79,12 +79,20 @@ public class AgendamentoBean implements Serializable {
                 agendamentoDao.inserir(agendamentoTarde); 
 
                 agendamento = new Agendamento(); 
-                agendamentos = agendamentoDao.listarAgendamentos(); 
+                agendamentos = agendamentoDao.listarAgendamentos();
+                FacesContext.getCurrentInstance().addMessage(
+                    null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                            "Agendado",
+                            "Esta equipe foi Agendada com sucesso"));
                 return null;
             } else {
                 agendamentoDao.inserir(agendamento);
                 agendamento = new Agendamento();
                 agendamentos = agendamentoDao.listarAgendamentos();
+                FacesContext.getCurrentInstance().addMessage(
+                    null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                            "Agendado",
+                            "Esta equipe foi Agendada com sucesso"));
                 return null;
             }
 

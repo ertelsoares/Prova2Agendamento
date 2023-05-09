@@ -62,7 +62,7 @@
                             requiredMessage="Faltou preencher a Data"
                             required="true"
                             mindate="#{buscaBean.now}"
-                            validatorMessage="Data Inválida. A data selecionada deve ser maior ou igual à data atual."
+                            validatorMessage="Data Inválida. A data selecionada deve ser maior ou igual à data atual e deve ser agendado hoje a tarde ou depois."
                             validator="#{buscaBean.validateData}">
                     <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy" />
                 </p:calendar>
@@ -83,8 +83,8 @@
                 <p:outputLabel id="totalservico"  value=" #{buscaBean.totalServico}" />
             </p:column><br/><br/>
             <p:commandButton value="Confirmar" 
-                             update=":resultadoAgendamentos" immediate="true" action="#{agendamentoBean.confirmarAgendamento()}"/>
-            <p:commandButton value="Limpar" action="#{buscaBean.limparContexto()}" immediate="true"/>
+                             update=":resultadoAgendamentos"  action="#{agendamentoBean.confirmarAgendamento()}"/>
+            <p:commandButton value="Limpar" action="#{buscaBean.limparContexto()}" />
             <p:growl showDetail="true" showSummary="true" autoUpdate="true"/>
         </h:form>
         <br/>
@@ -101,7 +101,7 @@
             </p:column>
             <p:column headerText="Data">
                 <h:outputText value="#{agen.data}">
-                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                    <f:convertDateTime pattern="dd/MM/yyyy" />
                 </h:outputText>
             </p:column>            
             <p:column headerText="Periodo">

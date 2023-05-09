@@ -145,13 +145,22 @@ public class BuscaBean implements Serializable {
     this.now = now;
     }
     public void validateData(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-    Date dataSelecionada = (Date) value;
-    Calendar cal = Calendar.getInstance();
-    cal.setTime(new Date());
-    cal.add(Calendar.DATE, -1); // subtrai um dia
+        if (value == null) {
+         return;
+       }      
+     Date dataSelecionada = (Date) value;
+     Calendar cal = Calendar.getInstance();
+     cal.setTime(new Date());
+    cal.add(Calendar.DATE, -2); 
     Date dataAtual = cal.getTime();
     if (dataSelecionada.before(dataAtual)) {
-        throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Data Inválida", "A data selecionada é anterior à data atual."));
+        throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Data Inválida", "A data selecionada é anterior à data atual. "));
+    }
+    cal.setTime(new Date());
+    cal.add(Calendar.DATE, -1);
+    dataAtual = cal.getTime();
+    if (dataSelecionada.before(dataAtual) &&  ("manha".equals(periodo) || "diainteiro".equals(periodo) )) {
+        throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Data Inválida", "A data selecionada é anterior à data atual. "));
     }
    }
     

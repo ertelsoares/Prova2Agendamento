@@ -33,7 +33,7 @@ public class AplicacaoBean {
     private List<SelectItem> itensEquipes;
     private List<SelectItem> itensTiposdeServicos;
     
-    private String arquivo = "C:/Users/ertel/Documents/dados2_agendamento.dat";
+    private String arquivo = "C:/Users/ertel/Documents/dados3_agendamento.dat";
 
     public AplicacaoBean() {
     }
